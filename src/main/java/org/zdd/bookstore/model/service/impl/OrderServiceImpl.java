@@ -106,7 +106,7 @@ public class OrderServiceImpl implements IOrderService {
             orderShipping.setReceiverZip(user.getZipCode());
             orderShipping.setReceiverState("广东");
             orderShipping.setReceiverCity("广州");
-            orderShipping.setReceiverDistrict("海珠区");
+            orderShipping.setReceiverDistrict("白云区");
             orderShippingMapper.insert(orderShipping);
 
             List<OrderDetail> orderDetails = new ArrayList<>();

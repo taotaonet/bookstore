@@ -135,7 +135,6 @@
         </div>
         <!--
             作者：offline
-            时间：2018-10-28
             描述：支付方式
         -->
         <div class="row" id="payment">
@@ -153,7 +152,6 @@
 
         <!--
             作者：offline
-            时间：2018-10-28
             描述：去支付
         -->
         <div class="row" id="to_paid_div">

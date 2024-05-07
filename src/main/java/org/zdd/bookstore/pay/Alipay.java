@@ -9,15 +9,19 @@ import org.zdd.bookstore.model.entity.Orders;
 import org.zdd.bookstore.model.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zdd.bookstore.model.service.impl.OrderServiceImpl;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 @Service
 public class Alipay extends AbstractPay{
 
     @Autowired
     private AlipayConfig alipayConfig;
+    @Autowired
+    private OrderServiceImpl orderServiceimpl;
 
     @Override
     public void prepareAndPay(PayContext payContext) throws IOException {
@@ -64,5 +68,11 @@ public class Alipay extends AbstractPay{
 
     @Override
     public void afterPay(PayContext payContext) {
+        Orders order = payContext.getOrders();
+
+        // 更新订单状态为已付款
+        order.setStatus(1);
+        order.setPaymentTime(new Date()); // 设置支付时间
+        orderServiceimpl.updateOrderAfterPay(payContext);
     }
 }
